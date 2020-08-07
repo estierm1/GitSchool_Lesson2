@@ -99,7 +99,7 @@ label define walls_list 11 no_walls 12 cane_palm 13 dirt 21 bamboo_mud 22 stone_
 encode walls, gen(wallsv2) lab(walls_list)
 
 *Language 
-capture label define language_list 1 english 2 hausa 3 igbo 4 yoruba 5 pidgin 96 other
+capture label define language_list 1 english 2 hindi 96 other
 encode survey_language, gen(survey_languagev2) lab(language_list)
 label var survey_languagev2 "Language of household interview"
 
@@ -110,12 +110,12 @@ label var survey_languagev2 "Language of household interview"
 **Country specific female questionnaire changes
 *Year and month of data collection.  
 
-gen FQwrongdate=1 if thisyear!=2018 & thisyear!=.
-replace FQwrongdate=1 if thismonth!=4 & thismonth!=5 & thismonth!=6 & thismonth!=. 
+gen FQwrongdate=1 if thisyear!=2019 & thisyear!=.
+replace FQwrongdate=1 if thismonth!=11 & thismonth!=12 & thismonth!=. 
 *If survey spans across 2 years
-/*replace FQwrongdate=1 if thisyear!=2018 & thisyear!=.
-replace FQwrongdate=1 if thismonth!=1 & thismonth!=. 
-*/
+replace FQwrongdate=1 if thisyear!=2020 & thisyear!=.
+replace FQwrongdate=1 if thismonth!=1 & thismonth!=2 & thismonth!=. 
+
 
 gen FQdoi=FQsystem_date
 replace FQdoi = FQmanual_date if FQmanual_date!="." & FQmanual_date!=""
@@ -220,8 +220,7 @@ order `var'v2, after(`var'QZ)
 rename *v2 *
 drop *QZ
 
-//Kenya R6
-capture label var hh_location_ladder	"Location of house on wealth ladder: 1 = poorest, 10 = wealthiest"
+
 
 ***************************************************************************************************
 ********************************* COUNTRY SPECIFIC WEIGHT GENERATION *********************************
